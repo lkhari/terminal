@@ -56,7 +56,7 @@ export namespace Actor {
         .where(eq(userTable.id, userID()))
         .then((rows) => {
           const flags = rows[0]?.flags;
-          if (!flags)
+          if (!flags || !flags[flag])
             throw new VisibleError(
               "forbidden",
               ErrorCodes.Permission.INSUFFICIENT_PERMISSIONS,
